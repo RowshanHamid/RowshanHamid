@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rowshan Hamid (Jabir) | Poet & Math Enthusiast</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 60px 0 80px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+        
+        .profile-container {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .profile-pic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin: 25px 0 10px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-icon {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            opacity: 1;
+            color: var(--light);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            display: inline-block;
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            height: 300px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        
+        .bio-section {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .language-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .language-tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .language-tab.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .language-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .bio-content {
+            padding: 40px;
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .bio-content.active {
+            display: block;
+        }
+        
+        .bio-content p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        .bio-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        [data-aos] {
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .photo-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .bio-content {
+                padding: 30px 20px;
+            }
+            
+            .language-tab {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container profile-container">
+            <img src="Me.jpg" alt="Rowshan Hamid" class="profile-pic">
+            <h1>Rowshan Hamid</h1>
+            <div class="subtitle">Poet | Math Enthusiast | Student</div>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/md.rowson.7902" class="social-icon" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/rowshan_hamid_jabr/#" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:rowshanhamid2008n@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </header>
+    
+    <section id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Gallery</h2>
+            </div>
+            <div class="photo-gallery">
+                <div class="gallery-item" data-aos="fade-up">
+                    <img src="Jabir-2016.jpg" alt="Me At 2016">
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="stadium.jpg" alt=" M.a. Aziz Stadium,chattogram. ">
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="with friend.jpg" alt="With Friend">
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="Fatikchari.jpg" alt="At Fatikchari">
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="July 2024.jpg" alt="July 2024">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="bio-section">
+                <div class="language-tabs">
+                    <div class="language-tab active" onclick="switchLanguage('english')">English</div>
+                    <div class="language-tab" onclick="switchLanguage('bangla')">বাংলা</div>
+                </div>
+                
+                <div id="english-bio" class="bio-content active">
+                    <p>My name is <span class="highlight">Rowshan Hamid</span>, but I'm also known as <span class="highlight">Jabir</span>. I was born on <span class="highlight">May 23, 2008</span>, in <span class="highlight">Chittagong, Bangladesh</span>. I'm currently a student of <span class="highlight">Class 10</span> at <span class="highlight">Nasirabad Government High School</span>, which I joined in 2020 through a competitive admission test.</p>
+                    
+                    <p>I have a profound passion for <span class="highlight">poetry</span>, and one of my poems, <span class="highlight">"রণ-প্রাণ"</span>, was published in my school magazine in 2024. Writing allows me to express my deepest thoughts and emotions. Alongside literature, I deeply enjoy <span class="highlight">mathematics</span>—it challenges my intellect and sharpens my analytical thinking. The beauty of solving complex problems gives me immense satisfaction.</p>
+                    
+                    <p><span class="highlight">Music</span> is another essential part of my life that brings me peace and inspiration. Whether listening to soulful melodies or playing instruments, music helps me find balance in my busy student life.</p>
+                    
+                    <p>I strive to maintain a <span class="highlight">disciplined lifestyle</span> and stay focused on both my academic pursuits and personal development. My philosophy centers on <span class="highlight">hard work, integrity, and the meaningful application of my talents</span> to contribute positively to my community and the world at large.</p>
+                </div>
+                
+                <div id="bangla-bio" class="bio-content">
+                    <p>আমার নাম <span class="highlight">রওশন হামিদ</span>, তবে অনেকে আমাকে <span class="highlight">জাবির</span> নামেও চেনে। আমি <span class="highlight">২০০৮ সালের ২৩ মে</span> <span class="highlight">চট্টগ্রামে</span> জন্মগ্রহণ করি। বর্তমানে আমি <span class="highlight">নাসিরাবাদ সরকারি উচ্চ বিদ্যালয়ের</span> <span class="highlight">দশম শ্রেণির</span> ছাত্র। আমি ২০২০ সালে ভর্তি পরীক্ষার মাধ্যমে এই স্কুলে ভর্তি হই।</p>
+                    
+                    <p>আমি <span class="highlight">কবিতা লেখায়</span> গভীরভাবে আগ্রহী, এবং আমার লেখা <span class="highlight">"রণ-প্রাণ"</span> নামের একটি কবিতা ২০২৪ সালে আমাদের বিদ্যালয়ের ম্যাগাজিনে প্রকাশিত হয়। কবিতার মাধ্যমে আমি আমার গভীরতম চিন্তা ও অনুভূতি প্রকাশ করতে পারি। সাহিত্যের পাশাপাশি আমি <span class="highlight">গণিত</span> খুব পছন্দ করি—এটি আমার বুদ্ধিবৃত্তিক চিন্তাশক্তিকে তীক্ষ্ণ করে। জটিল সমস্যা সমাধানের সৌন্দর্য আমাকে গভীর তৃপ্তি দেয়।</p>
+                    
+                    <p><span class="highlight">সংগীত</span> আমার জীবনের আরেকটি অবিচ্ছেদ্য অংশ যা আমাকে শান্তি ও অনুপ্রেরণা দেয়। গান শুনতে বা বাজাতে যাই কেন, সংগীত আমার ব্যস্ত ছাত্রজীবনে ভারসাম্য বজায় রাখতে সাহায্য করে।</p>
+                    
+                    <p>আমি একটি <span class="highlight">শৃঙ্খলাবদ্ধ জীবনযাপন</span> বজায় রাখার চেষ্টা করি এবং আমার শিক্ষাগত লক্ষ্য ও ব্যক্তিগত উন্নয়নের দিকে মনোনিবেশ করি। আমার দর্শন কেন্দ্রীভূত হয়েছে <span class="highlight">পরিশ্রম, সততা এবং আমার প্রতিভার অর্থপূর্ণ ব্যবহারের</span> উপর—যাতে আমি আমার সম্প্রদায় ও বিশ্বের জন্য ইতিবাচক অবদান রাখতে পারি।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="#gallery" class="footer-link">Gallery</a>
+                <a href="#about" class="footer-link">About</a>
+                <a href="mailto:rowshanhamid2008n@gmail.com" class="footer-link">Contact</a>
+            </div>
+            <div class="copyright">© 2024 Rowshan Hamid (Jabir). All Rights Reserved.</div>
+        </div>
+    </footer>
+    
+    <script>
+        // Language switcher
+        function switchLanguage(language) {
+            // Hide all bio contents
+            document.querySelectorAll('.bio-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Deactivate all tabs
+            document.querySelectorAll('.language-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Activate selected language
+            document.getElementById(language + '-bio').classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Simple scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('[data-aos]');
+                elements.forEach(el => {
+                    const position = el.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (position < windowHeight - 100) {
+                        el.classList.add('aos-animate');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Trigger on load
+        });
+    </script>
+</body>
+</html>
